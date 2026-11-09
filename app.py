@@ -47,9 +47,23 @@ st.write(
 
 # Inicializar estados da sessão para persistir dados da tabela
 if "df_destinatarios" not in st.session_state:
-  st.session_state["df_destinatarios"] = pd.DataFrame(
-      columns=["Enviar", "Nome", "E-mail", "Arquivo_Obj", "Nome_Arquivo"]
-  )
+  destinatarios_config = st.secrets.get("destinatarios", [])
+
+  if destinatarios_config:
+    dados_iniciais = []
+    for d in destinatarios_config:
+      dados_iniciais.append({
+          "Enviar": False,
+          "Nome": d["nome"],
+          "Email": d["email"],
+          "Arquivo_Obj": None,
+          "Nome_Arquivo": "",
+      })
+    st.session_state["df_destinatarios"] = pd.DataFrame(dados_iniciais)
+  else:
+    st.session_state["df_destinatarios"] = pd.DataFrame(
+        columns=["Enviar", "Nome", "E-mail", "Arquivo_Obj", "Nome_Arquivo"]
+    )
 
 with st.sidebar:
   st.header("⚙️ Configurações & Ações")
