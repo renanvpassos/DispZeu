@@ -8,7 +8,7 @@ import streamlit as st
 
 # Configuração inicial da Página como Centralizada (para a tela de login)
 st.set_page_config(
-    page_title="Envio de Documentos em Massa", page_icon="📧", layout="centered"
+    page_title="Envio de Documentos em Massa", page_icon="📧", layout="wide"
 )
 
 # Função de Autenticação baseada no Secrets
