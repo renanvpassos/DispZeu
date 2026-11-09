@@ -6,11 +6,10 @@ from email.mime.text import MIMEText
 import pandas as pd
 import streamlit as st
 
-# Configuração da Página
+# Configuração inicial da Página como Centralizada (para a tela de login)
 st.set_page_config(
-    page_title="Envio de Documentos em Massa", page_icon="📧", layout="wide"
+    page_title="Envio de Documentos em Massa", page_icon="📧", layout="centered"
 )
-
 
 # Função de Autenticação baseada no Secrets
 def verificar_senha():
