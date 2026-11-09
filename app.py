@@ -160,7 +160,7 @@ if not st.session_state["df_destinatarios"].empty:
 
     assunto = st.text_input(
         "Assunto do E-mail",
-        value="Documento Importante - Referente ao seu atendimento",
+        value="HOLERITE",
     )
     mensagem_corpo = st.text_area(
         "Corpo do E-mail",
