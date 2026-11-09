@@ -113,17 +113,21 @@ if not st.session_state["df_destinatarios"].empty:
 
     novas_linhas = []
     for index, row in df_atual.iterrows():
-        # Adicionada centralização alinhando o conteúdo das colunas no centro vertical
-        col1, col2, col3, col4 = st.columns([0.5, 2.5, 2.5, 4], vertical_alignment="center")
+        # Reduzimos para 3 colunas, colocando a checkbox e o nome juntos na primeira
+        col1, col2, col3 = st.columns([3, 3, 4], vertical_alignment="center")
 
         with col1:
-            # Checkbox sem o texto "Enviar" ao lado
-            sel = st.checkbox("", value=row["Enviar"], key=f"chk_{index}", label_visibility="collapsed")
+            # Criamos duas sub-coluninhas internas para aproximar ao máximo a checkbox do nome
+            sub_c1, sub_c2 = st.columns([0.2, 2.8], vertical_alignment="center")
+            with sub_c1:
+                sel = st.checkbox("", value=row["Enviar"], key=f"chk_{index}", label_visibility="collapsed")
+            with sub_c2:
+                st.markdown(f"**{row['Nome']}**")
+
         with col2:
-            st.markdown(f"**{row['Nome']}**")
-        with col3:
             st.text(row["Email"])
-        with col4:
+            
+        with col3:
             # Upload de arquivo individual
             uploaded_file = st.file_uploader(
                 f"Anexo para {row['Nome']}",
