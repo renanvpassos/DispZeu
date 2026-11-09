@@ -164,7 +164,7 @@ if not st.session_state["df_destinatarios"].empty:
     mensagem_corpo = st.text_area(
         "Corpo do E-mail",
         value=(
-            "Segue Holerite em aenxo.\n\nAtenciosamente,\nEliseu"
+            "Segue Holerite em anexo.\n\nAtenciosamente,\nEliseu"
             " Mauro"
         ),
         height=150,
