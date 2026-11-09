@@ -46,18 +46,18 @@ st.write(
 )
 
 if "df_destinatarios" not in st.session_state:
-  destinatarios_config = st.secrets.get("destinatarios", [])
+  destinatarios_config = st.secrets.get("destinatarios_simples", {})
 
   if destinatarios_config:
     dados_iniciais = [
         {
             "Enviar": False,
-            "Nome": d["nome"],
-            "Email": d["email"],
+            "Nome": nome,
+            "Email": email,
             "Arquivo_Obj": None,
             "Nome_Arquivo": "",
         }
-        for d in destinatarios_config
+        for nome, email in destinatarios_config.items()
     ]
     st.session_state["df_destinatarios"] = pd.DataFrame(dados_iniciais)
   else:
